@@ -1,4 +1,5 @@
-# <My game review>
+# サイト名
+My game review
 
 ## サイト概要
 ### サイトテーマ
