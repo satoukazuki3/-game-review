@@ -1,4 +1,4 @@
-# My game review
+# Personal Impression
 
 ## サイト概要
 ### サイトテーマ
