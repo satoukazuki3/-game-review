@@ -1,0 +1,24 @@
+<table class='table table-hover table-inverse'>
+  <thead>
+    <tr>
+      <th></th>
+      <th>Title</th>
+      <th>Opinion</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% reviews.each do |review| %>
+      <tr>
+        <td><%= link_to(review.user) do %>
+          <%= image_tag review.user.get_profile_image, size:'50x50' %>
+          <% end %>
+        </td>
+        <td><%= link_to review.title,review %></td>
+        <td><%= review.article %></td>
+        <td><%= link_to "#{review.comments.count} コメント", review_path(review.id) %></td>
+        
+      </tr>
+    <% end %>
+  </tbody>
+</table>

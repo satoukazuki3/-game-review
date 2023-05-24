@@ -1,2 +1,20 @@
-<h1>Public::Reviews#edit</h1>
-<p>Find me in app/views/public/reviews/edit.html.erb</p>
+<div class='container'>
+  <div class='row'>
+    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+  		<h1>Editing review</h1>
+  		<% if @review.errors.any? %>
+      <div id="error_explanation"><h3>
+      <%= @review.errors.count %>
+       errors prohibited this obj from being saved:
+      </h3>
+      </div><ul>
+      <% @review.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+      <% end %>
+      </ul>
+      <% end %>
+  		<%= render 'form', review: @review %>
+  		<%= link_to 'Show', @review %> |
+  		<%= link_to 'Back', reviews_path, class: "back" %>
+  </div>
+</div>
