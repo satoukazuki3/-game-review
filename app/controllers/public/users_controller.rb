@@ -1,13 +1,13 @@
 class Public::UsersController < ApplicationController
   def index
     @users = User.all
-    @book = Book.new
+    @review = Review.new
   end
 
   def show
     @user = User.find(params[:id])
-    @books = @user.books
-    @book = Book.new
+    @reviews = @user.reviews
+    @review = Review.new
   end
 
   def edit

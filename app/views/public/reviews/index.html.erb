@@ -4,13 +4,13 @@
       <h2>User info</h2>
 
      <%= render 'layouts/errors', obj: @review %>
-      <%= render 'users/info', user: @review %>
+      <%= render 'admin/users/info', user: current_user %>
       <h2 class="mt-3">投稿</h2>
-      <%= render 'admin/review/form', review: @review %>
+      <%= render 'admin/reviews/form', review: @review %>
     </div>
     <div class='col-md-8 offset-md-1'>
       <h2>reviews</h2>
-      <%= render 'admin/review/index', reviews: @reviews%>
+      <%= render 'admin/reviews/index', reviews: @reviews%>
       
     </div>
   </div>

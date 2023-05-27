@@ -1,0 +1,57 @@
+<header>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+      <a class="navbar-brand" href="/"><span>PersonalImpression</span></a>
+
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav ml-auto">
+    <% if user_signed_in? %>
+      <li>
+        <%= link_to "マイページ　", user_path(current_user) %>
+      </li>
+      <li>
+        <%= link_to "レビュー一覧　", reviews_path %>
+      </li>
+      <li>
+        <%= link_to "会員一覧　", users_path %>
+      </li>
+      <li>
+        <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+      </li>
+    <% elsif admin_signed_in? %>
+      <li>
+        <%= link_to "レビュー一覧　", reviews_path %>
+      </li>
+      <li>
+        <%= link_to "会員一覧　", admin_users_path %>
+      </li>
+      <li>
+        <%= link_to "ジャンル一覧　", admin_genres_path %>
+      </li>
+      <li>
+        <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
+      </li>
+    <% else %>
+      <li>
+        <%= link_to "About　", about_path %>
+      </li>
+      <li>
+        <%= link_to "新規登録　", new_user_registration_path %>
+      </li>
+      <li>
+        <%= link_to "ログイン", new_user_session_path %>
+      </li>
+    <% end %>
+    </ul>
+    </div>
+    </div>
+    <% if user_signed_in? %>
+    <div class="navbar-brand mx-auto" style="width: 200px;">
+      <h6>ようこそ、<%= current_user.name%>さん！</h6>
+    </div>
+    <% end %>
+  </nav>
+</header>
