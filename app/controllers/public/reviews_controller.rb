@@ -1,4 +1,6 @@
 class Public::ReviewsController < ApplicationController
+  before_action :correct_user, only: [:edit]
+  
   def index
     @reviews = Review.all
     @review = Review.new
@@ -19,7 +21,7 @@ class Public::ReviewsController < ApplicationController
   def update
      @review = Review.find(params[:id])
     if @review.update(review_params)
-      redirect_to review_path(@book), notice: "You have updated review successfully."
+      redirect_to review_path(@review), notice: "You have updated review successfully."
     else
       render "edit"
     end
@@ -30,20 +32,35 @@ class Public::ReviewsController < ApplicationController
   end
 
   def create
-    @review = Book.new(book_params)
-    @review.user_id = current_user.id
-    if @review.save
-      redirect_to review_path(@review), notice: "You have created review successfully."
-    else
-      @reviews = Book.all
-      @user = current_user
-      render 'index'
-    end
+    @review = Review.new(review_params)
+     @review.user_id = current_user.id
+     @review.save
+     redirect_to reviews_path
+    # @review = Review.new(review_params)
+    # @review.user_id = current_user.id
+    # if @review.save
+    #   redirect_to review_path(@review.id), notice: "You have created review successfully."
+    # else
+    #   @reviews = Review.all
+    #   @user = current_user
+    #   render :index
+    # end
   end
 
   def destroy
     review = Review.find(params[:id])
     review.destroy
     redirect_to reviews_path
+  end
+  
+  private
+  def review_params
+    params.require(:review).permit(:title, :article, :genre_id)
+  end
+  
+  def correct_user
+    @review = Review.find(params[:id])
+    @user = @review.user
+    redirect_to(reviews_path) unless @user == current_user
   end
 end
