@@ -71,7 +71,6 @@ ActiveRecord::Schema.define(version: 2023_05_21_082557) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "genre_id", null: false
     t.integer "user_id", null: false
-    t.string "name", null: false
     t.string "title", null: false
     t.text "article", null: false
   end
