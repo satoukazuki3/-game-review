@@ -13,12 +13,15 @@
           <td><%= @review.article %></td>
           <td>ジャンル：<%= @review.genre.name %></td>
           
+          <td><% if @review.user == current_user %>
           <td> <%= link_to 'Edit', edit_review_path(@review), class: "btn btn-sm btn-success" %></td>
-             
+             <% end %>
+          </td>
           <!--<td>コメント件数：<%#= @review.comments.count %></td>-->
-          
+          <td><% if @review.user == current_user %>
           <td> <%= link_to 'Destroy', @review, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger"%></td>
-          
+          <% end %>
+          </td>
           </td>
         </tr>
         </table>
