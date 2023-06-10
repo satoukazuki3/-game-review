@@ -16,4 +16,6 @@ class Review < ApplicationRecord
       @review = Review.all
     end
  end
+ 
+ 
 end
